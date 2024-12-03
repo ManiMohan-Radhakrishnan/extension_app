@@ -7,7 +7,7 @@
   .chart-box {
     display: flex;
     gap: 1rem;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: flex-start;
     overflow: auto;
     padding: 0.5rem 1rem;
@@ -62,7 +62,7 @@
                 #fac800 95.19%
               );
             }
-            &.spacepoint-box {
+            &.bonuspoint-box {
               background: linear-gradient(
                 346.25deg,
                 #97e8c5 2.56%,
@@ -153,30 +153,54 @@
               // }
             }
           }
-          &.rankpoint-box {
-            background: linear-gradient(
-              346.25deg,
-              #fff3c4 2.56%,
-              #ffe889 95.19%
-            );
-            // @media (prefers-color-scheme: dark) {
-            //   background: linear-gradient(
-            //     346.25deg,
-            //     #2c2c30 2.56%,
-            //     #2c2c30 95.19%
-            //   );
-            // }
-            &::before {
-              background: linear-gradient(0deg, #b5b6ba, #ffe889) border-box;
-              // @media (prefers-color-scheme: dark) {
-              //   background: linear-gradient(0deg, #2c2c30 75%, #ffe889)
-              //     border-box;
-              // }
-            }
+          // &.rankpoint-box {
+          //   background: linear-gradient(
+          //     346.25deg,
+          //     #fff3c4 2.56%,
+          //     #ffe889 95.19%
+          //   );
+          //   // @media (prefers-color-scheme: dark) {
+          //   //   background: linear-gradient(
+          //   //     346.25deg,
+          //   //     #2c2c30 2.56%,
+          //   //     #2c2c30 95.19%
+          //   //   );
+          //   // }
+          //   &::before {
+          //     background: linear-gradient(0deg, #b5b6ba, #ffe889) border-box;
+          //     // @media (prefers-color-scheme: dark) {
+          //     //   background: linear-gradient(0deg, #2c2c30 75%, #ffe889)
+          //     //     border-box;
+          //     // }
+          //   }
 
-            // border: 0.7px solid #ffe889;
-          }
-          &.spacepoint-box {
+          //   // border: 0.7px solid #ffe889;
+          // }
+          // &.spacepoint-box {
+          //   background: linear-gradient(
+          //     346.25deg,
+          //     #97e8c5 2.56%,
+          //     #76e8b7 95.19%
+          //   );
+          //   // @media (prefers-color-scheme: dark) {
+          //   //   background: linear-gradient(
+          //   //     346.25deg,
+          //   //     #2c2c30 2.56%,
+          //   //     #2c2c30 95.19%
+          //   //   );
+          //   // }
+          //   &::before {
+          //     background: linear-gradient(0deg, #b5b6ba, #76e8b7) border-box;
+          //     // @media (prefers-color-scheme: dark) {
+          //     //   background: linear-gradient(0deg, #2c2c30 75%, #76e8b7)
+          //     //     border-box;
+          //     // }
+          //   }
+
+          //   // border: 0.7px solid #76e8b7;
+          // }
+
+          &.bonuspoint-box {
             background: linear-gradient(
               346.25deg,
               #97e8c5 2.56%,
@@ -199,6 +223,26 @@
 
             // border: 0.7px solid #76e8b7;
           }
+
+          &.dummypoint-box {
+            background: linear-gradient(
+              346.25deg,
+              #ffe889 2.56%,
+              #fac800 95.19%
+            );
+            background: linear-gradient(
+              346.25deg,
+              rgba(231, 231, 233, 0.4) 2.56%,
+              rgba(231, 231, 233, 0.4) 95.19%
+            );
+          }
+          // &.bonuspoint-box {
+          //   background: linear-gradient(
+          //     346.25deg,
+          //     #97e8c5 2.56%,
+          //     #28b87a 95.19%
+          //   );
+          // }
         }
       }
     }
@@ -264,7 +308,19 @@
 
               // border: 0.7px solid #ffe889;
             }
-            &.spacepoint-box {
+            // &.spacepoint-box {
+            //   background: linear-gradient(
+            //     346.25deg,
+            //     #2c2c30 2.56%,
+            //     #2c2c30 95.19%
+            //   );
+            //   &::before {
+            //     background: linear-gradient(0deg, #2c2c30 75%, #76e8b7)
+            //       border-box;
+            //   }
+            //   // border: 0.7px solid #76e8b7;
+            // }
+            &.bonuspoint-box {
               background: linear-gradient(
                 346.25deg,
                 #2c2c30 2.56%,
@@ -275,6 +331,13 @@
                   border-box;
               }
               // border: 0.7px solid #76e8b7;
+            }
+            &.dummypoint-box {
+              background: linear-gradient(
+                346.25deg,
+                #2c2c3066 2.56%,
+                #2c2c3066 95.19%
+              );
             }
           }
         }

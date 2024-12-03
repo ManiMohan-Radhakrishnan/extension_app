@@ -41,7 +41,8 @@
     "activeTab",
     "storage",
     "tabs",
-    "webNavigation"
+    "webNavigation",
+    "clipboardWrite"
   ],
 
   "host_permissions": ["http://*/*", "https://*/*"]

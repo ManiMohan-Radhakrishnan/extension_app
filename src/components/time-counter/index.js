@@ -44,9 +44,9 @@ const TimeCounter = ({ targetDate }) => {
   // Displaying the time left without leading zeros
   return (
     <div className="flex items-center">
-      <p className="font-md font-[12px] text-[#fff]">Next Claim in : </p>
+      <p className="font-[12px] text-[#68686F] font-bold">Next Claim in : </p>
 
-      <p className="font-md font-[12px] text-yellow">
+      <p className="font-md font-[14px] text-[#FB6340]">
         {timeLeft.days > 0 && `${timeLeft.days}d `}
         {timeLeft.hours > 0 && `${timeLeft.hours}h `}
         {timeLeft.minutes > 0 && `${timeLeft.minutes}m `}

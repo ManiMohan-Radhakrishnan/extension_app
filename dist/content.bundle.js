@@ -17,6 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   formatWalletAddress: () => (/* binding */ formatWalletAddress),
 /* harmony export */   getLocalStorage: () => (/* binding */ getLocalStorage),
 /* harmony export */   getPrivateKey: () => (/* binding */ getPrivateKey),
+/* harmony export */   handleCopytoClipboard: () => (/* binding */ handleCopytoClipboard),
 /* harmony export */   latestEntry: () => (/* binding */ latestEntry),
 /* harmony export */   maxTotal: () => (/* binding */ maxTotal),
 /* harmony export */   setLocalStorage: () => (/* binding */ setLocalStorage),
@@ -149,6 +150,14 @@ function setLocalStorage(key, value) {
     }).catch(reject);
   });
 }
+const handleCopytoClipboard = (keydata, valuedata, setChangeCopy) => {
+  navigator.clipboard.writeText(valuedata).then(() => {
+    setChangeCopy(keydata);
+    setTimeout(() => {
+      setChangeCopy(null);
+    }, 3000);
+  });
+};
 
 /***/ })
 

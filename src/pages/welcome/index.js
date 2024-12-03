@@ -39,7 +39,7 @@ const Home = () => {
       if (result) {
         router?.push(`/home`);
       } else {
-        router?.push("/import-wallet");
+        router?.push("/choose-wallet");
       }
     }, 3000);
   };

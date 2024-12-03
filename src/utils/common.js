@@ -156,3 +156,13 @@ export function setLocalStorage(key, value) {
       .catch(reject);
   });
 }
+
+export const handleCopytoClipboard = (keydata, valuedata, setChangeCopy) => {
+
+  navigator.clipboard.writeText(valuedata).then(() => {
+    setChangeCopy(keydata);
+    setTimeout(() => {
+      setChangeCopy(null);
+    }, 3000);
+  });
+};

@@ -61,3 +61,14 @@ export const getRewardsTotal = async () => {
     throw error;
   }
 };
+
+export const getDailyRewardStatus = async () => {
+  try {
+    const response = await baseAxios.get("/users/reward_permit_status");
+
+    return response.data;
+  } catch (error) {
+    console.error("Error reward Total:", error);
+    throw error;
+  }
+};

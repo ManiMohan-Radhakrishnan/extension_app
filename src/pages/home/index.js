@@ -13,13 +13,18 @@ import {
   getRewardsTotal,
 } from "@/utils/base-methods";
 import PointsStatistics from "@/components/dashboard/PointsStatistics ";
-import { formatNumber, truncateAddress } from "@/utils/common";
+import {
+  formatNumber,
+  handleCopytoClipboard,
+  truncateAddress,
+} from "@/utils/common";
 import TimeCounter from "@/components/time-counter";
 import ClaimRewards from "@/components/claim-rewards";
 import { v4 as uuidv4 } from "uuid";
 import { validatePrivateKey } from "@/utils/common";
 import { ethers } from "ethers";
 import { generateToken } from "@/utils/base-methods";
+import ReferToReward from "@/components/ReferToReward";
 
 const Home = () => {
   const router = useRouter();
@@ -27,9 +32,7 @@ const Home = () => {
   const [privateKey, setPrivateKey] = useState();
   const [walletData, setWalletData] = useState(null);
 
-  // const wsClient = WebSocketClient.getInstance();
-
-  const [worker, setWorker] = useState(null);
+  const [changeCopy, setChangeCopy] = useState(false);
 
   useEffect(() => {
     getJobsValue();
@@ -50,14 +53,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // privateKey && initialize();
+    getRewardsData();
+    privateKey && initialize();
   }, [privateKey]);
-
-  const jobData = [
-    {
-      name: "job1",
-    },
-  ];
 
   const [data, setData] = useState(null);
   const [rewardsHistoryData, setRewardsHistoryData] = useState([]);
@@ -160,10 +158,10 @@ const Home = () => {
     try {
       const response = await getRewardsHistory();
       if (response) {
-        const {
-          data: { data },
-        } = response;
-        setRewardsHistoryData(data);
+        // const {
+        //   data: { data },
+        // } = response;
+        setRewardsHistoryData(response?.data);
       }
     } catch (error) {
       console.log("🚀 ~ handleGetRewardsHistory ~ error:", error);
@@ -210,23 +208,53 @@ const Home = () => {
             />
           </div>
           <div className="flex justify-end items-center gap-2">
+            <h1 className="m-0 text-[1.3rem] font-semibold text-white">
+              Earnings{" "}
+            </h1>
             <p className="ml-auto text-xs font-medium text-white">
               {truncateAddress(walletData?.address, 20)}
             </p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="#fff"
-              className="size-4"
+            <div
+              className="cursor-pointer"
+              onClick={() =>
+                handleCopytoClipboard(
+                  walletData?.address,
+                  walletData?.address,
+                  setChangeCopy
+                )
+              }
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"
-              />
-            </svg>
+              {changeCopy ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="#ffffff"
+                  className="size-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m4.5 12.75 6 6 9-13.5"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="20"
+                  height="20"
+                  className="w-4 h-4"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.875 2.5H6.875C6.70924 2.5 6.55027 2.56585 6.43306 2.68306C6.31585 2.80027 6.25 2.95924 6.25 3.125V6.25H3.125C2.95924 6.25 2.80027 6.31585 2.68306 6.43306C2.56585 6.55027 2.5 6.70924 2.5 6.875V16.875C2.5 17.0408 2.56585 17.1997 2.68306 17.3169C2.80027 17.4342 2.95924 17.5 3.125 17.5H13.125C13.2908 17.5 13.4497 17.4342 13.5669 17.3169C13.6842 17.1997 13.75 17.0408 13.75 16.875V13.75H16.875C17.0408 13.75 17.1997 13.6842 17.3169 13.5669C17.4342 13.4497 17.5 13.2908 17.5 13.125V3.125C17.5 2.95924 17.4342 2.80027 17.3169 2.68306C17.1997 2.56585 17.0408 2.5 16.875 2.5ZM12.5 16.25H3.75V7.5H12.5V16.25ZM16.25 12.5H13.75V6.875C13.75 6.70924 13.6842 6.55027 13.5669 6.43306C13.4497 6.31585 13.2908 6.25 13.125 6.25H7.5V3.75H16.25V12.5Z"
+                    fill="#ffffff"
+                  />
+                </svg>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center justify-between mt-[3rem]">
@@ -236,7 +264,7 @@ const Home = () => {
                 {rewardsTotal ? rewardsTotal : 0} PTS {/* */}
               </h4>
               <p className="text-xs font-medium text-[#FFFFFF99]">
-                Total Credits
+                Current Epoch Earnings
               </p>
             </div>
             <div className="flex flex-col gap-1.5">
@@ -244,14 +272,21 @@ const Home = () => {
                 {rewardsTotal ? formatNumber(rewardsTotal) : 0} PTS {/* */}
               </h4>
               <p className="text-xs font-medium text-[#FFFFFF99] text-right">
-                Total Epoch Points
+                Today&apos;s Earnings
               </p>
             </div>
           </div>
         </div>
         <ClaimRewards />
-
-        <PointsStatistics data={rewardsHistoryData || []} />
+        <div className="mt-4">
+          <PointsStatistics
+            data={rewardsHistoryData}
+            realTimeData={rewardsRealtimeData}
+          />
+        </div>
+        <div className="mt-4">
+          <ReferToReward />
+        </div>
 
         <div className="flex bg-[#fff] w-full mt-5 p-4 flex-col gap-4 rounded-md overflow-y-auto">
           <h4 className="text-lg font-bold text-black">

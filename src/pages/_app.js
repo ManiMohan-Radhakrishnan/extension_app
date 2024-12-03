@@ -1,5 +1,5 @@
 // import Providers from "@/contextApi/Providers";
-// import "../styles/styles.scss";
+import "../styles/styles.scss";
 import "../styles/globals.css";
 
 import { ToastContainer } from "react-toastify";
