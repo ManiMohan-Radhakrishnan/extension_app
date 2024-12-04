@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Input } from "@nextui-org/react";
+import { Input, Spinner } from "@nextui-org/react";
 
 import { Slide, toast } from "react-toastify";
 import { useRouter } from "next/router";
@@ -20,6 +20,7 @@ const ImportWallet = () => {
   const [loading, setLoading] = useState(false);
 
   const [privateKeyValue, setPrivateKeyValue] = useState();
+  const [extensionID, setExtensionID] = useState();
 
   const handlewalletButton = async () => {
     if (!privateKeyValue) {
@@ -37,6 +38,17 @@ const ImportWallet = () => {
     localStorage.setItem("privateKey", privateKeyValue);
     initialize();
   };
+
+  useEffect(() => {
+    window.postMessage({ type: "getExtensionID", value: "" }, "*");
+
+    window.addEventListener("message", (event) => {
+      if (event?.data?.type === "sendExtensionId") {
+        localStorage.setItem("extensionID", event?.data?.value);
+        setExtensionID(event?.data?.value);
+      }
+    });
+  }, []);
 
   const showToast = (msg) => {
     toast.error(msg, {
@@ -61,16 +73,16 @@ const ImportWallet = () => {
         console.log("WebSocket is connected. in Wallet");
         wsService?.send(
           JSON.stringify({
-            workerID: "extension",
+            workerID: `chrome-extension://${extensionID}`,
             msgType: "REGISTER",
             message: {
               id: uuidv4(),
               type: "REGISTER",
               worker: {
-                host: "extension",
-                identity: "Extension",
+                host: `chrome-extension://${extensionID}`,
+                identity: extensionID,
                 ownerAddress: wallet?.address ?? "",
-                type: "Web",
+                type: "Extension",
               },
             },
           })
@@ -80,7 +92,7 @@ const ImportWallet = () => {
       wsService.onmessage = (value) => {
         console.log("Received job message:", JSON?.parse(value?.data));
         let message = JSON?.parse(value?.data);
-        setLoading(false);
+
         if (message?.status === false) {
           router?.push(`/register-failed?reason=${message?.message}`);
         } else if (message?.status === true) {
@@ -113,12 +125,8 @@ const ImportWallet = () => {
     <section className="max-w-[360px] gap-3 w-full mx-auto bg-[#eef8ff] h-[100vh] flex flex-col items-center justify-center">
       {loading ? (
         <>
-          <div className="w-[50px] h-[50px]">
-            <Lottie
-              height={100}
-              width={100}
-              src={"../../assets/lottie/loaderlogo.json"}
-            />
+          <div className="content-loader h-dvh flex flex-col justify-center items-center gap-4 p-4 w-full">
+            <Spinner size="lg" />
           </div>
         </>
       ) : (

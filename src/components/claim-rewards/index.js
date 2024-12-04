@@ -118,7 +118,7 @@ const ClaimRewards = () => {
   return (
     <>
       <div
-        className="collector-card relative rounded-lg w-full md:w-[48.5%] lg:w-[48.75%] xxl:w-full mt-4"
+        className="collector-card relative rounded-lg w-full md:w-[48.5%] lg:w-[48.75%] xxl:w-full"
         style={{
           backgroundImage: `url(${rewardBg.src})`,
           backgroundPosition: "center",

@@ -2111,8 +2111,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Payer: () => (/* binding */ Payer),
 /* harmony export */   Permission: () => (/* binding */ Permission),
 /* harmony export */   Protocol: () => (/* binding */ Protocol),
-/* harmony export */   PutBucketEncryptionRequestFilterSensitiveLog: () => (/* binding */ PutBucketEncryptionRequestFilterSensitiveLog),
-/* harmony export */   PutBucketInventoryConfigurationRequestFilterSensitiveLog: () => (/* binding */ PutBucketInventoryConfigurationRequestFilterSensitiveLog),
 /* harmony export */   ReplicaModificationsStatus: () => (/* binding */ ReplicaModificationsStatus),
 /* harmony export */   ReplicationRuleStatus: () => (/* binding */ ReplicationRuleStatus),
 /* harmony export */   ReplicationStatus: () => (/* binding */ ReplicationStatus),
@@ -2716,18 +2714,6 @@ const ListPartsRequestFilterSensitiveLog = (obj) => ({
     ...obj,
     ...(obj.SSECustomerKey && { SSECustomerKey: _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_0__.SENSITIVE_STRING }),
 });
-const PutBucketEncryptionRequestFilterSensitiveLog = (obj) => ({
-    ...obj,
-    ...(obj.ServerSideEncryptionConfiguration && {
-        ServerSideEncryptionConfiguration: ServerSideEncryptionConfigurationFilterSensitiveLog(obj.ServerSideEncryptionConfiguration),
-    }),
-});
-const PutBucketInventoryConfigurationRequestFilterSensitiveLog = (obj) => ({
-    ...obj,
-    ...(obj.InventoryConfiguration && {
-        InventoryConfiguration: InventoryConfigurationFilterSensitiveLog(obj.InventoryConfiguration),
-    }),
-});
 
 
 /***/ }),
@@ -2752,6 +2738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MFADelete: () => (/* binding */ MFADelete),
 /* harmony export */   ObjectAlreadyInActiveTierError: () => (/* binding */ ObjectAlreadyInActiveTierError),
 /* harmony export */   OutputLocationFilterSensitiveLog: () => (/* binding */ OutputLocationFilterSensitiveLog),
+/* harmony export */   PutBucketEncryptionRequestFilterSensitiveLog: () => (/* binding */ PutBucketEncryptionRequestFilterSensitiveLog),
+/* harmony export */   PutBucketInventoryConfigurationRequestFilterSensitiveLog: () => (/* binding */ PutBucketInventoryConfigurationRequestFilterSensitiveLog),
 /* harmony export */   PutObjectOutputFilterSensitiveLog: () => (/* binding */ PutObjectOutputFilterSensitiveLog),
 /* harmony export */   PutObjectRequestFilterSensitiveLog: () => (/* binding */ PutObjectRequestFilterSensitiveLog),
 /* harmony export */   QuoteFields: () => (/* binding */ QuoteFields),
@@ -2772,7 +2760,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   WriteGetObjectResponseRequestFilterSensitiveLog: () => (/* binding */ WriteGetObjectResponseRequestFilterSensitiveLog)
 /* harmony export */ });
 /* harmony import */ var _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smithy/smithy-client */ "./node_modules/@smithy/smithy-client/dist-es/index.js");
+/* harmony import */ var _models_0__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models_0 */ "./node_modules/@aws-sdk/client-s3/dist-es/models/models_0.js");
 /* harmony import */ var _S3ServiceException__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./S3ServiceException */ "./node_modules/@aws-sdk/client-s3/dist-es/models/S3ServiceException.js");
+
 
 
 const MFADelete = {
@@ -2884,6 +2874,18 @@ var SelectObjectContentEventStream;
         return visitor._(value.$unknown[0], value.$unknown[1]);
     };
 })(SelectObjectContentEventStream || (SelectObjectContentEventStream = {}));
+const PutBucketEncryptionRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.ServerSideEncryptionConfiguration && {
+        ServerSideEncryptionConfiguration: (0,_models_0__WEBPACK_IMPORTED_MODULE_2__.ServerSideEncryptionConfigurationFilterSensitiveLog)(obj.ServerSideEncryptionConfiguration),
+    }),
+});
+const PutBucketInventoryConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.InventoryConfiguration && {
+        InventoryConfiguration: (0,_models_0__WEBPACK_IMPORTED_MODULE_2__.InventoryConfigurationFilterSensitiveLog)(obj.InventoryConfiguration),
+    }),
+});
 const PutObjectOutputFilterSensitiveLog = (obj) => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_0__.SENSITIVE_STRING }),
@@ -2975,6 +2977,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   de_CompleteMultipartUploadCommand: () => (/* binding */ de_CompleteMultipartUploadCommand),
 /* harmony export */   de_CopyObjectCommand: () => (/* binding */ de_CopyObjectCommand),
 /* harmony export */   de_CreateBucketCommand: () => (/* binding */ de_CreateBucketCommand),
+/* harmony export */   de_CreateBucketMetadataTableConfigurationCommand: () => (/* binding */ de_CreateBucketMetadataTableConfigurationCommand),
 /* harmony export */   de_CreateMultipartUploadCommand: () => (/* binding */ de_CreateMultipartUploadCommand),
 /* harmony export */   de_CreateSessionCommand: () => (/* binding */ de_CreateSessionCommand),
 /* harmony export */   de_DeleteBucketAnalyticsConfigurationCommand: () => (/* binding */ de_DeleteBucketAnalyticsConfigurationCommand),
@@ -2984,6 +2987,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   de_DeleteBucketIntelligentTieringConfigurationCommand: () => (/* binding */ de_DeleteBucketIntelligentTieringConfigurationCommand),
 /* harmony export */   de_DeleteBucketInventoryConfigurationCommand: () => (/* binding */ de_DeleteBucketInventoryConfigurationCommand),
 /* harmony export */   de_DeleteBucketLifecycleCommand: () => (/* binding */ de_DeleteBucketLifecycleCommand),
+/* harmony export */   de_DeleteBucketMetadataTableConfigurationCommand: () => (/* binding */ de_DeleteBucketMetadataTableConfigurationCommand),
 /* harmony export */   de_DeleteBucketMetricsConfigurationCommand: () => (/* binding */ de_DeleteBucketMetricsConfigurationCommand),
 /* harmony export */   de_DeleteBucketOwnershipControlsCommand: () => (/* binding */ de_DeleteBucketOwnershipControlsCommand),
 /* harmony export */   de_DeleteBucketPolicyCommand: () => (/* binding */ de_DeleteBucketPolicyCommand),
@@ -3004,6 +3008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   de_GetBucketLifecycleConfigurationCommand: () => (/* binding */ de_GetBucketLifecycleConfigurationCommand),
 /* harmony export */   de_GetBucketLocationCommand: () => (/* binding */ de_GetBucketLocationCommand),
 /* harmony export */   de_GetBucketLoggingCommand: () => (/* binding */ de_GetBucketLoggingCommand),
+/* harmony export */   de_GetBucketMetadataTableConfigurationCommand: () => (/* binding */ de_GetBucketMetadataTableConfigurationCommand),
 /* harmony export */   de_GetBucketMetricsConfigurationCommand: () => (/* binding */ de_GetBucketMetricsConfigurationCommand),
 /* harmony export */   de_GetBucketNotificationConfigurationCommand: () => (/* binding */ de_GetBucketNotificationConfigurationCommand),
 /* harmony export */   de_GetBucketOwnershipControlsCommand: () => (/* binding */ de_GetBucketOwnershipControlsCommand),
@@ -3070,6 +3075,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   se_CompleteMultipartUploadCommand: () => (/* binding */ se_CompleteMultipartUploadCommand),
 /* harmony export */   se_CopyObjectCommand: () => (/* binding */ se_CopyObjectCommand),
 /* harmony export */   se_CreateBucketCommand: () => (/* binding */ se_CreateBucketCommand),
+/* harmony export */   se_CreateBucketMetadataTableConfigurationCommand: () => (/* binding */ se_CreateBucketMetadataTableConfigurationCommand),
 /* harmony export */   se_CreateMultipartUploadCommand: () => (/* binding */ se_CreateMultipartUploadCommand),
 /* harmony export */   se_CreateSessionCommand: () => (/* binding */ se_CreateSessionCommand),
 /* harmony export */   se_DeleteBucketAnalyticsConfigurationCommand: () => (/* binding */ se_DeleteBucketAnalyticsConfigurationCommand),
@@ -3079,6 +3085,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   se_DeleteBucketIntelligentTieringConfigurationCommand: () => (/* binding */ se_DeleteBucketIntelligentTieringConfigurationCommand),
 /* harmony export */   se_DeleteBucketInventoryConfigurationCommand: () => (/* binding */ se_DeleteBucketInventoryConfigurationCommand),
 /* harmony export */   se_DeleteBucketLifecycleCommand: () => (/* binding */ se_DeleteBucketLifecycleCommand),
+/* harmony export */   se_DeleteBucketMetadataTableConfigurationCommand: () => (/* binding */ se_DeleteBucketMetadataTableConfigurationCommand),
 /* harmony export */   se_DeleteBucketMetricsConfigurationCommand: () => (/* binding */ se_DeleteBucketMetricsConfigurationCommand),
 /* harmony export */   se_DeleteBucketOwnershipControlsCommand: () => (/* binding */ se_DeleteBucketOwnershipControlsCommand),
 /* harmony export */   se_DeleteBucketPolicyCommand: () => (/* binding */ se_DeleteBucketPolicyCommand),
@@ -3099,6 +3106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   se_GetBucketLifecycleConfigurationCommand: () => (/* binding */ se_GetBucketLifecycleConfigurationCommand),
 /* harmony export */   se_GetBucketLocationCommand: () => (/* binding */ se_GetBucketLocationCommand),
 /* harmony export */   se_GetBucketLoggingCommand: () => (/* binding */ se_GetBucketLoggingCommand),
+/* harmony export */   se_GetBucketMetadataTableConfigurationCommand: () => (/* binding */ se_GetBucketMetadataTableConfigurationCommand),
 /* harmony export */   se_GetBucketMetricsConfigurationCommand: () => (/* binding */ se_GetBucketMetricsConfigurationCommand),
 /* harmony export */   se_GetBucketNotificationConfigurationCommand: () => (/* binding */ se_GetBucketNotificationConfigurationCommand),
 /* harmony export */   se_GetBucketOwnershipControlsCommand: () => (/* binding */ se_GetBucketOwnershipControlsCommand),
@@ -3313,6 +3321,30 @@ const se_CreateBucketCommand = async (input, context) => {
     b.m("PUT").h(headers).b(body);
     return b.build();
 };
+const se_CreateBucketMetadataTableConfigurationCommand = async (input, context) => {
+    const b = (0,_smithy_core__WEBPACK_IMPORTED_MODULE_1__.requestBuilder)(input, context);
+    const headers = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({}, _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.isSerializableHeaderValue, {
+        "content-type": "application/xml",
+        [_cm]: input[_CMD],
+        [_xasca]: input[_CA],
+        [_xaebo]: input[_EBO],
+    });
+    b.bp("/");
+    b.p("Bucket", () => input.Bucket, "{Bucket}", false);
+    const query = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
+        [_mT]: [, ""],
+    });
+    let body;
+    let contents;
+    if (input.MetadataTableConfiguration !== undefined) {
+        contents = se_MetadataTableConfiguration(input.MetadataTableConfiguration, context);
+        body = _ve;
+        contents.a("xmlns", "http://s3.amazonaws.com/doc/2006-03-01/");
+        body += contents.toString();
+    }
+    b.m("POST").h(headers).q(query).b(body);
+    return b.build();
+};
 const se_CreateMultipartUploadCommand = async (input, context) => {
     const b = (0,_smithy_core__WEBPACK_IMPORTED_MODULE_1__.requestBuilder)(input, context);
     const headers = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({}, _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.isSerializableHeaderValue, {
@@ -3468,6 +3500,20 @@ const se_DeleteBucketLifecycleCommand = async (input, context) => {
     b.p("Bucket", () => input.Bucket, "{Bucket}", false);
     const query = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
         [_l]: [, ""],
+    });
+    let body;
+    b.m("DELETE").h(headers).q(query).b(body);
+    return b.build();
+};
+const se_DeleteBucketMetadataTableConfigurationCommand = async (input, context) => {
+    const b = (0,_smithy_core__WEBPACK_IMPORTED_MODULE_1__.requestBuilder)(input, context);
+    const headers = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({}, _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.isSerializableHeaderValue, {
+        [_xaebo]: input[_EBO],
+    });
+    b.bp("/");
+    b.p("Bucket", () => input.Bucket, "{Bucket}", false);
+    const query = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
+        [_mT]: [, ""],
     });
     let body;
     b.m("DELETE").h(headers).q(query).b(body);
@@ -3776,6 +3822,20 @@ const se_GetBucketLoggingCommand = async (input, context) => {
     b.p("Bucket", () => input.Bucket, "{Bucket}", false);
     const query = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
         [_log]: [, ""],
+    });
+    let body;
+    b.m("GET").h(headers).q(query).b(body);
+    return b.build();
+};
+const se_GetBucketMetadataTableConfigurationCommand = async (input, context) => {
+    const b = (0,_smithy_core__WEBPACK_IMPORTED_MODULE_1__.requestBuilder)(input, context);
+    const headers = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({}, _smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.isSerializableHeaderValue, {
+        [_xaebo]: input[_EBO],
+    });
+    b.bp("/");
+    b.p("Bucket", () => input.Bucket, "{Bucket}", false);
+    const query = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
+        [_mT]: [, ""],
     });
     let body;
     b.m("GET").h(headers).q(query).b(body);
@@ -5277,6 +5337,16 @@ const de_CreateBucketCommand = async (output, context) => {
     await (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.collectBody)(output.body, context);
     return contents;
 };
+const de_CreateBucketMetadataTableConfigurationCommand = async (output, context) => {
+    if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+    }
+    const contents = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
+        $metadata: deserializeMetadata(output),
+    });
+    await (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.collectBody)(output.body, context);
+    return contents;
+};
 const de_CreateMultipartUploadCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -5387,6 +5457,16 @@ const de_DeleteBucketInventoryConfigurationCommand = async (output, context) => 
     return contents;
 };
 const de_DeleteBucketLifecycleCommand = async (output, context) => {
+    if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+    }
+    const contents = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
+        $metadata: deserializeMetadata(output),
+    });
+    await (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.collectBody)(output.body, context);
+    return contents;
+};
+const de_DeleteBucketMetadataTableConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
     }
@@ -5647,6 +5727,17 @@ const de_GetBucketLoggingCommand = async (output, context) => {
     if (data[_LE] != null) {
         contents[_LE] = de_LoggingEnabled(data[_LE], context);
     }
+    return contents;
+};
+const de_GetBucketMetadataTableConfigurationCommand = async (output, context) => {
+    if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+    }
+    const contents = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.map)({
+        $metadata: deserializeMetadata(output),
+    });
+    const data = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectObject)(await (0,_aws_sdk_core__WEBPACK_IMPORTED_MODULE_4__.parseXmlBody)(output.body, context));
+    contents.GetBucketMetadataTableConfigurationResult = de_GetBucketMetadataTableConfigurationResult(data, context);
     return contents;
 };
 const de_GetBucketMetricsConfigurationCommand = async (output, context) => {
@@ -7693,6 +7784,13 @@ const se_MetadataEntry = (input, context) => {
     }
     return bn;
 };
+const se_MetadataTableConfiguration = (input, context) => {
+    const bn = new _aws_sdk_xml_builder__WEBPACK_IMPORTED_MODULE_0__.XmlNode(_MTC);
+    if (input[_STD] != null) {
+        bn.c(se_S3TablesDestination(input[_STD], context).n(_STD));
+    }
+    return bn;
+};
 const se_Metrics = (input, context) => {
     const bn = new _aws_sdk_xml_builder__WEBPACK_IMPORTED_MODULE_0__.XmlNode(_Me);
     if (input[_S] != null) {
@@ -8116,6 +8214,16 @@ const se_S3Location = (input, context) => {
     }
     bn.lc(input, "UserMetadata", "UserMetadata", () => se_UserMetadata(input[_UM], context));
     bn.cc(input, _SC);
+    return bn;
+};
+const se_S3TablesDestination = (input, context) => {
+    const bn = new _aws_sdk_xml_builder__WEBPACK_IMPORTED_MODULE_0__.XmlNode(_STD);
+    if (input[_TBA] != null) {
+        bn.c(_aws_sdk_xml_builder__WEBPACK_IMPORTED_MODULE_0__.XmlNode.of(_STBA, input[_TBA]).n(_TBA));
+    }
+    if (input[_TN] != null) {
+        bn.c(_aws_sdk_xml_builder__WEBPACK_IMPORTED_MODULE_0__.XmlNode.of(_STN, input[_TN]).n(_TN));
+    }
     return bn;
 };
 const se_ScanRange = (input, context) => {
@@ -8754,6 +8862,16 @@ const de__Error = (output, context) => {
     }
     return contents;
 };
+const de_ErrorDetails = (output, context) => {
+    const contents = {};
+    if (output[_EC] != null) {
+        contents[_EC] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_EC]);
+    }
+    if (output[_EM] != null) {
+        contents[_EM] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_EM]);
+    }
+    return contents;
+};
 const de_ErrorDocument = (output, context) => {
     const contents = {};
     if (output[_K] != null) {
@@ -8809,6 +8927,19 @@ const de_FilterRuleList = (output, context) => {
         .map((entry) => {
         return de_FilterRule(entry, context);
     });
+};
+const de_GetBucketMetadataTableConfigurationResult = (output, context) => {
+    const contents = {};
+    if (output[_MTCR] != null) {
+        contents[_MTCR] = de_MetadataTableConfigurationResult(output[_MTCR], context);
+    }
+    if (output[_S] != null) {
+        contents[_S] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_S]);
+    }
+    if (output[_Er] != null) {
+        contents[_Er] = de_ErrorDetails(output[_Er], context);
+    }
+    return contents;
 };
 const de_GetObjectAttributesParts = (output, context) => {
     const contents = {};
@@ -9169,6 +9300,13 @@ const de_LoggingEnabled = (output, context) => {
     }
     if (output[_TOKF] != null) {
         contents[_TOKF] = de_TargetObjectKeyFormat(output[_TOKF], context);
+    }
+    return contents;
+};
+const de_MetadataTableConfigurationResult = (output, context) => {
+    const contents = {};
+    if (output[_STDR] != null) {
+        contents[_STDR] = de_S3TablesDestinationResult(output[_STDR], context);
     }
     return contents;
 };
@@ -9759,6 +9897,22 @@ const de_S3KeyFilter = (output, context) => {
     }
     return contents;
 };
+const de_S3TablesDestinationResult = (output, context) => {
+    const contents = {};
+    if (output[_TBA] != null) {
+        contents[_TBA] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_TBA]);
+    }
+    if (output[_TN] != null) {
+        contents[_TN] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_TN]);
+    }
+    if (output[_TAa] != null) {
+        contents[_TAa] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_TAa]);
+    }
+    if (output[_TNa] != null) {
+        contents[_TNa] = (0,_smithy_smithy_client__WEBPACK_IMPORTED_MODULE_3__.expectString)(output[_TNa]);
+    }
+    return contents;
+};
 const de_ServerSideEncryptionByDefault = (output, context) => {
     const contents = {};
     if (output[_SSEA] != null) {
@@ -10248,6 +10402,8 @@ const _MKe = "MetadataKey";
 const _MM = "MissingMeta";
 const _MP = "MaxParts";
 const _MS = "MetricsStatus";
+const _MTC = "MetadataTableConfiguration";
+const _MTCR = "MetadataTableConfigurationResult";
 const _MU = "MaxUploads";
 const _MV = "MetadataValue";
 const _Me = "Metrics";
@@ -10403,6 +10559,10 @@ const _SSEKMSKI = "SSEKMSKeyId";
 const _SSER = "ServerSideEncryptionRule";
 const _SSES = "SSES3";
 const _ST = "SessionToken";
+const _STBA = "S3TablesBucketArn";
+const _STD = "S3TablesDestination";
+const _STDR = "S3TablesDestinationResult";
+const _STN = "S3TablesName";
 const _S_ = "S3";
 const _Sc = "Schedule";
 const _Se = "Setting";
@@ -10411,7 +10571,9 @@ const _St = "Start";
 const _Su = "Suffix";
 const _T = "Tagging";
 const _TA = "TopicArn";
+const _TAa = "TableArn";
 const _TB = "TargetBucket";
+const _TBA = "TableBucketArn";
 const _TC = "TagCount";
 const _TCo = "TopicConfiguration";
 const _TCop = "TopicConfigurations";
@@ -10419,6 +10581,8 @@ const _TD = "TaggingDirective";
 const _TDMOS = "TransitionDefaultMinimumObjectSize";
 const _TG = "TargetGrants";
 const _TGa = "TargetGrant";
+const _TN = "TableName";
+const _TNa = "TableNamespace";
 const _TOKF = "TargetObjectKeyFormat";
 const _TP = "TargetPrefix";
 const _TPC = "TotalPartsCount";
@@ -10491,6 +10655,7 @@ const _lo = "location";
 const _log = "logging";
 const _lt = "list-type";
 const _m = "metrics";
+const _mT = "metadataTable";
 const _ma = "marker";
 const _mb = "max-buckets";
 const _mdb = "max-directory-buckets";
@@ -63074,7 +63239,7 @@ function __rewriteRelativeImportExtension(path, preserveJsx) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.703.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"node ../../scripts/compilation/inline client-s3","build:es":"tsc -p tsconfig.es.json","build:include:deps":"lerna run --scope $npm_package_name --include-dependencies build","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","extract:docs":"api-extractor run --local","generate:client":"node ../../scripts/generate-clients/single-service --solo s3","test":"yarn g:vitest run","test:browser":"node ./test/browser-build/esbuild && vitest run -c vitest.config.browser.ts --mode development","test:browser:watch":"node ./test/browser-build/esbuild && yarn g:vitest watch -c vitest.config.browser.ts","test:e2e":"yarn g:vitest run -c vitest.config.e2e.ts --mode development && yarn test:browser","test:e2e:watch":"yarn g:vitest watch -c vitest.config.e2e.ts","test:watch":"yarn g:vitest watch"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"5.2.0","@aws-crypto/sha256-browser":"5.2.0","@aws-crypto/sha256-js":"5.2.0","@aws-sdk/client-sso-oidc":"3.699.0","@aws-sdk/client-sts":"3.699.0","@aws-sdk/core":"3.696.0","@aws-sdk/credential-provider-node":"3.699.0","@aws-sdk/middleware-bucket-endpoint":"3.696.0","@aws-sdk/middleware-expect-continue":"3.696.0","@aws-sdk/middleware-flexible-checksums":"3.701.0","@aws-sdk/middleware-host-header":"3.696.0","@aws-sdk/middleware-location-constraint":"3.696.0","@aws-sdk/middleware-logger":"3.696.0","@aws-sdk/middleware-recursion-detection":"3.696.0","@aws-sdk/middleware-sdk-s3":"3.696.0","@aws-sdk/middleware-ssec":"3.696.0","@aws-sdk/middleware-user-agent":"3.696.0","@aws-sdk/region-config-resolver":"3.696.0","@aws-sdk/signature-v4-multi-region":"3.696.0","@aws-sdk/types":"3.696.0","@aws-sdk/util-endpoints":"3.696.0","@aws-sdk/util-user-agent-browser":"3.696.0","@aws-sdk/util-user-agent-node":"3.696.0","@aws-sdk/xml-builder":"3.696.0","@smithy/config-resolver":"^3.0.12","@smithy/core":"^2.5.3","@smithy/eventstream-serde-browser":"^3.0.13","@smithy/eventstream-serde-config-resolver":"^3.0.10","@smithy/eventstream-serde-node":"^3.0.12","@smithy/fetch-http-handler":"^4.1.1","@smithy/hash-blob-browser":"^3.1.9","@smithy/hash-node":"^3.0.10","@smithy/hash-stream-node":"^3.1.9","@smithy/invalid-dependency":"^3.0.10","@smithy/md5-js":"^3.0.10","@smithy/middleware-content-length":"^3.0.12","@smithy/middleware-endpoint":"^3.2.3","@smithy/middleware-retry":"^3.0.27","@smithy/middleware-serde":"^3.0.10","@smithy/middleware-stack":"^3.0.10","@smithy/node-config-provider":"^3.1.11","@smithy/node-http-handler":"^3.3.1","@smithy/protocol-http":"^4.1.7","@smithy/smithy-client":"^3.4.4","@smithy/types":"^3.7.1","@smithy/url-parser":"^3.0.10","@smithy/util-base64":"^3.0.0","@smithy/util-body-length-browser":"^3.0.0","@smithy/util-body-length-node":"^3.0.0","@smithy/util-defaults-mode-browser":"^3.0.27","@smithy/util-defaults-mode-node":"^3.0.27","@smithy/util-endpoints":"^2.1.6","@smithy/util-middleware":"^3.0.10","@smithy/util-retry":"^3.0.10","@smithy/util-stream":"^3.3.1","@smithy/util-utf8":"^3.0.0","@smithy/util-waiter":"^3.1.9","tslib":"^2.6.2"},"devDependencies":{"@aws-sdk/signature-v4-crt":"3.696.0","@tsconfig/node16":"16.1.3","@types/node":"^16.18.96","concurrently":"7.0.0","downlevel-dts":"0.10.1","rimraf":"3.0.2","typescript":"~4.9.5"},"engines":{"node":">=16.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*/**"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
+module.exports = /*#__PURE__*/JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.705.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"node ../../scripts/compilation/inline client-s3","build:es":"tsc -p tsconfig.es.json","build:include:deps":"lerna run --scope $npm_package_name --include-dependencies build","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","extract:docs":"api-extractor run --local","generate:client":"node ../../scripts/generate-clients/single-service --solo s3","test":"yarn g:vitest run","test:browser":"node ./test/browser-build/esbuild && vitest run -c vitest.config.browser.ts --mode development","test:browser:watch":"node ./test/browser-build/esbuild && yarn g:vitest watch -c vitest.config.browser.ts","test:e2e":"yarn g:vitest run -c vitest.config.e2e.ts --mode development && yarn test:browser","test:e2e:watch":"yarn g:vitest watch -c vitest.config.e2e.ts","test:watch":"yarn g:vitest watch"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"5.2.0","@aws-crypto/sha256-browser":"5.2.0","@aws-crypto/sha256-js":"5.2.0","@aws-sdk/client-sso-oidc":"3.699.0","@aws-sdk/client-sts":"3.699.0","@aws-sdk/core":"3.696.0","@aws-sdk/credential-provider-node":"3.699.0","@aws-sdk/middleware-bucket-endpoint":"3.696.0","@aws-sdk/middleware-expect-continue":"3.696.0","@aws-sdk/middleware-flexible-checksums":"3.701.0","@aws-sdk/middleware-host-header":"3.696.0","@aws-sdk/middleware-location-constraint":"3.696.0","@aws-sdk/middleware-logger":"3.696.0","@aws-sdk/middleware-recursion-detection":"3.696.0","@aws-sdk/middleware-sdk-s3":"3.696.0","@aws-sdk/middleware-ssec":"3.696.0","@aws-sdk/middleware-user-agent":"3.696.0","@aws-sdk/region-config-resolver":"3.696.0","@aws-sdk/signature-v4-multi-region":"3.696.0","@aws-sdk/types":"3.696.0","@aws-sdk/util-endpoints":"3.696.0","@aws-sdk/util-user-agent-browser":"3.696.0","@aws-sdk/util-user-agent-node":"3.696.0","@aws-sdk/xml-builder":"3.696.0","@smithy/config-resolver":"^3.0.12","@smithy/core":"^2.5.3","@smithy/eventstream-serde-browser":"^3.0.13","@smithy/eventstream-serde-config-resolver":"^3.0.10","@smithy/eventstream-serde-node":"^3.0.12","@smithy/fetch-http-handler":"^4.1.1","@smithy/hash-blob-browser":"^3.1.9","@smithy/hash-node":"^3.0.10","@smithy/hash-stream-node":"^3.1.9","@smithy/invalid-dependency":"^3.0.10","@smithy/md5-js":"^3.0.10","@smithy/middleware-content-length":"^3.0.12","@smithy/middleware-endpoint":"^3.2.3","@smithy/middleware-retry":"^3.0.27","@smithy/middleware-serde":"^3.0.10","@smithy/middleware-stack":"^3.0.10","@smithy/node-config-provider":"^3.1.11","@smithy/node-http-handler":"^3.3.1","@smithy/protocol-http":"^4.1.7","@smithy/smithy-client":"^3.4.4","@smithy/types":"^3.7.1","@smithy/url-parser":"^3.0.10","@smithy/util-base64":"^3.0.0","@smithy/util-body-length-browser":"^3.0.0","@smithy/util-body-length-node":"^3.0.0","@smithy/util-defaults-mode-browser":"^3.0.27","@smithy/util-defaults-mode-node":"^3.0.27","@smithy/util-endpoints":"^2.1.6","@smithy/util-middleware":"^3.0.10","@smithy/util-retry":"^3.0.10","@smithy/util-stream":"^3.3.1","@smithy/util-utf8":"^3.0.0","@smithy/util-waiter":"^3.1.9","tslib":"^2.6.2"},"devDependencies":{"@aws-sdk/signature-v4-crt":"3.696.0","@tsconfig/node16":"16.1.3","@types/node":"^16.18.96","concurrently":"7.0.0","downlevel-dts":"0.10.1","rimraf":"3.0.2","typescript":"~4.9.5"},"engines":{"node":">=16.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*/**"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
 
 /***/ }),
 

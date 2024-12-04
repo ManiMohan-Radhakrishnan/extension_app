@@ -11,6 +11,12 @@ console.log("Content script loaded");
 //   }
 // );
 
+const extensionId = chrome.runtime.id;
+console.log("Extension ID:", extensionId);
+
+const currentHost = window.location.hostname;
+console.log("Current Host:", currentHost);
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log("Received data in backgroundScript", message);
   if (message?.type === "send_jobdata") {
@@ -31,6 +37,13 @@ window.addEventListener("message", async (event) => {
       }
     );
   }
+  if (event?.data?.type === "getExtensionID") {
+    window.postMessage(
+      { type: "sendExtensionId", value: chrome.runtime.id },
+      "*"
+    );
+  }
+
   if (event?.data?.type === "send_jobdata") {
     let jobData = await getLocalStorage("allJobData");
     console.log("valueinStorage", jobData);

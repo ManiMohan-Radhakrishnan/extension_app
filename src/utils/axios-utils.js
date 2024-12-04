@@ -2,6 +2,7 @@ import axios from "axios";
 import Router from "next/router"; // Import Router from Next.js
 
 let BASE_URL = "https://dataapi.openledger.dev/api/v1/";
+
 const appAxios = axios.create({
   baseURL: BASE_URL,
 });
@@ -9,14 +10,13 @@ const appAxios = axios.create({
 appAxios.interceptors.request.use(
   async function (config) {
     try {
-      const auth_token = localStorage?.getItem("auth_token"); // Retrieve token from AsyncStorage
-      console.log("🚀 ~ auth_token:", auth_token);
-      // test = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHgzYWRiZDk5ZjI3YzIyMDY4OTgyYjA3NTVlNTM0ZmUxODBhOWRkYjFmIiwiaWQiOjEsImV4cCI6MTczMjM3Mzg4NX0.rb3E_wwLDftZrQOt-y166BMevu1SouGxqv2kS4wWAho" // Log token to verify it's being set correctly
-      if (auth_token) config.headers.Authorization = `Bearer ${auth_token}`;
+      const auth_token = localStorage?.getItem("auth_token"); // Retrieve token from localStorage
+      if (auth_token) {
+        config.headers.Authorization = `Bearer ${auth_token}`;
+      }
     } catch (error) {
       console.error("Error fetching auth token:", error);
     }
-
     return config;
   },
   function (error) {
@@ -25,22 +25,48 @@ appAxios.interceptors.request.use(
 );
 
 appAxios.interceptors.response.use(
-  (response) => response, // Pass through successful responses
+  (response) => {
+    return response; // Pass through successful responses
+  },
   async (error) => {
-    // Check for 401 status (unauthorized)
-    if (error?.response?.status === 401 || error?.response?.status === 404) {
-      console.error("Unauthorized: Token has expired or is invalid.");
+    const { response } = error;
 
-      // Remove the expired token from storage
-      localStorage.removeItem("auth_token");
-
-      // Redirect to the home page
-      Router.push("/welcome");
+    if (!response) {
+      // This handles network errors or when the server doesn't respond
+      console.error("Network error or server not reachable.");
+      alert("Unable to connect to the server. Please try again later.");
+      return Promise.reject(error);
     }
 
-    console.error("Error response:", error.response);
+    const statusCode = response.status;
 
-    return Promise.reject(error);
+    // Handle different HTTP error codes here
+    if (statusCode === 404) {
+      console.error("Resource not found (404).");
+
+      // Optionally, you can redirect to a custom 404 page
+      // Router.push("/404");
+    } else if (statusCode === 401) {
+      console.error("Unauthorized (401): Token expired or invalid.");
+
+      // Remove the expired token from storage and redirect
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("privateKey");
+
+      // Redirect user to login or welcome page
+      Router.push("/welcome");
+    } else if (statusCode === 500) {
+      console.error("Server error (500).");
+
+      // Optionally, display a custom message or redirect to an error page
+      alert(
+        "There was an error processing your request. Please try again later."
+      );
+    } else {
+      console.error(`Unexpected error: ${statusCode}`, response);
+    }
+
+    return Promise.reject(error); // Always reject the error so it can be handled further if needed
   }
 );
 
